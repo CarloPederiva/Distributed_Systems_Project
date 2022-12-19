@@ -1,0 +1,275 @@
+body {
+  background: #895b5b;
+  color: #f8f8f8;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Anton|News+Cycle:700|Roboto");
+html {
+  font-size: 15px;
+}
+
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  height: 900px;
+  background: #E60000;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+svg.header {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50vw;
+  z-index: 1;
+}
+
+/* Card Container & Body */
+.card-container {
+  width: 700px;
+  height: 450px;
+  border-radius: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  perspective: 1000px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.7s linear;
+  z-index: 1;
+  margin-top: 10px;
+  margin-bottom: 70px;
+}
+.card-container .card-body {
+  width: 100%;
+  height: 100%;
+}
+
+/*- Card sides -*/
+.side {
+  width: 98%;
+  height: 97.5%;
+  backface-visibility: hidden;
+  background: #F2F2F2;
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+  padding: 25px;
+  position: absolute;
+  top: 1.2%;
+  left: 1%;
+}
+.side h2 {
+  color: #333333;
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.side p,
+.side li {
+  color: #8D8D8D;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.side .container-fluid {
+  height: 100%;
+}
+.side .container-fluid .row {
+  height: 100%;
+}
+
+/* Card-Sides */
+.side-back {
+  z-index: 4;
+  transform: rotateX(180deg);
+}
+.side-back .product-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.side-back .product-image img {
+  height: auto;
+  width: 55%;
+  margin-left: 10%;
+}
+
+.side-front {
+  z-index: 2;
+}
+.side-front .product-image {
+  position: relative;
+}
+.side-front .product-image img {
+  position: absolute;
+  left: -90%;
+  top: 15%;
+}
+.side-front .content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.side-front .price-rating {
+  display: flex;
+  justify-content: space-between;
+}
+.side-front .price-rating h3 {
+  color: #333333;
+  font-size: 1.2rem;
+  font-family: "News Cycle", sans-serif;
+  text-transform: uppercase;
+}
+.side-front .price-rating h3 span {
+  color: #E60000;
+}
+.side-front .price-rating .price,
+.side-front .price-rating .rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.side-front .price-rating .price p {
+  font-size: 2rem;
+  font-family: "News Cycle", sans-serif;
+  line-height: 2rem;
+  color: #E60000;
+}
+.side-front .price-rating .rating .fa {
+  font-size: 1.5rem;
+  margin-right: 0;
+  color: #E60000;
+}
+.side-front .details {
+  margin: 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.details {
+  color: #000000;
+}
+.side-front .button {
+  margin-top: auto;
+  border: 1px solid #E60000;
+  border-radius: 40px;
+  color: #E60000;
+  cursor: pointer;
+  display: block;
+  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.3s linear;
+  overflow: hidden;
+  z-index: 3;
+}
+.side-front .button:before {
+  position: absolute;
+  top: 0%;
+  left: -160%;
+  width: 150%;
+  height: 100%;
+  background: #E60000;
+  content: " ";
+  transition: all 0.4s ease-in;
+  transform: skewX(60deg);
+  z-index: -1;
+}
+.side-front .button:hover {
+  color: #fff;
+}
+.side-front .button:hover:before {
+  left: -30%;
+}
+
+/* Flip Button */
+.flip {
+  color: #E60000;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.flip .flip-button {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #E60000;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+.flip .flip-button .fa {
+  font-size: 2rem;
+  line-height: 1rem;
+  margin-bottom: 10px;
+}
+.flip .flip-button:hover {
+  background: #E60000;
+  color: #fff;
+}
+.flip p {
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Flipping */
+.flipped {
+  transform: rotateX(180deg);
+}
+
+.disappear {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in, visibility 0.75s linear;
+}
+
+/* Rating Overrides */
+.jq-ry-container {
+  padding: 0;
+}
+
+@media (max-width: 992px) {
+  .card-container {
+    width: 400px;
+    height: 600px;
+  }
+
+  .side-front .product-image img {
+    position: static;
+    height: 100px;
+  }
+
+  .side-front .product-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .side-front .content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+}
